@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Main Page</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css" />
+</head>
+
+<body class="main">
+    <div class="container-fluid p-0 ">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark ">
+            <div class="container-fluid" style="background-color: black;">
+                <a class="navbar-brand m-logo" href="Main.html">
+                    <img src="File pendukung/Strides.png" class="img-fluid ">Strides
+                </a>
+                <h3 id="m-user" class="ms-4 "></h3>
+                <button class="navbar-toggler n-button" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarToggler" aria-controls="navbarToggler" aria-expanded="false"
+                    aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarToggler">
+                    <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                        <li class="nav-item">
+                            <form class="form-inline d-flex flex-row ms-4 ">
+                                <input class="form-control mr-sm-2 w-100 " type="search" placeholder="Search"
+                                    aria-label="Search">
+                                <button class="btn btn-outline-success my-2 my-sm-0 ms-3 "
+                                    style="color: gold; border-color: gold;" type="submit">Search</button>
+                            </form>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="Main.html">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="about.html">About</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="cart.html">
+                                <img src="File pendukung/Cart.png" class="img-fluid l-cart">
+                                <span id="cart-count" class="cart-count">0</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <div id="saldo" style="display: flex;  align-items: center;">
+                                <a class="nav-link">Saldo : </a>
+                                <a class="nav-link" id="total-saldo">10000000</a>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <div id="content">
+            <div id="banner" class="d-flex flex-column justify-content-center align-items-center ms-auto me-auto mt-2">
+                <center>
+                    <img src="File pendukung/Header img.jpg" class="img-fluid mt-2 mb-3">
+                </center>
+            </div>
+        </div>
+        <h1 class="text-center mt-3 mb-5" id="product">Our Products</h1>
+        <div id="items" class="row d-flex justify-content-evenly  align-items-center "></div>
+    </div>
+    <center style="color: gold;" class="mt-2 mb-2 ">
+        Copyrigt &copy; 2023.
+    </center>
+
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+        crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"
+        integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <script src="script.js"></script>
+
+
+    <script>
+        const list = [
+            {
+                id: 1,
+                name: "White Shoes",
+                image: "file pendukung/White shoes.png",
+                price: 100000,
+            },
+            {
+                id: 2,
+                name: "Black Shoes",
+                image: "file pendukung/Black Shoes.png",
+                price: 200000,
+            },
+            {
+                id: 3,
+                name: "Sport Shoes",
+                image: "file pendukung/Sport shoes.png",
+                price: 500000,
+            },
+            {
+                id: 4,
+                name: "Red & White",
+                image: "file pendukung/Indo Shoes.png",
+                price: 300000,
+            },
+            {
+                id: 5,
+                name: "Pink Shoes",
+                image: "file pendukung/Sports Shoes.jpeg",
+                price: 400000,
+            },
+        ];
+
+
+        const appendLocalStorage = (key, value) => {
+            const existing = localStorage.getItem(key);
+            existing
+                ? localStorage.setItem(key, `${existing},${value}`)
+                : localStorage.setItem(key, value);
+        };
+
+        const removeLocalStorage = (key, value) => {
+            // only remove one per duplicated item
+            const existing = localStorage.getItem(key);
+            const arr = existing.split(",");
+            const index = arr.indexOf(value);
+            if (index > -1) {
+                arr.splice(index, 1);
+            }
+
+            localStorage.setItem(key, arr.join(","));
+
+        };
+
+        const getLocalStorage = (key) => {
+            const existing = localStorage.getItem(key);
+            return existing ? existing.split(",") : [];
+        };
+
+        const storedSaldo = localStorage.getItem("total-saldo");
+        if (storedSaldo) {
+            document.getElementById("total-saldo").textContent = storedSaldo;
+        }
+
+        const itemsElement = document.getElementById("items");
+        const cartCountElement = document.getElementById("cart-count");
+
+        let cartCount = getLocalStorage('cart').length;
+        cartCountElement.textContent = cartCount;
+
+        list.forEach((item) => {
+            const itemElement = document.createElement("div");
+            itemElement.classList.add("item", "col-md-6", "d-flex", "flex-column", "justify-content-evenly", "align-items-center",
+            );
+            itemElement.style.backgroundColor = "gold";
+            itemElement.style.borderColor = "black";
+            itemElement.style.borderRadius = "10px";
+            itemElement.style.borderStyle = "solid";
+
+            const imageElement = document.createElement("img");
+            imageElement.src = item.image;
+            imageElement.alt = item.name;
+            imageElement.classList.add("img-fluid", "w-25", "rounded", "mt-3");
+            itemElement.style.borderColor = "black";
+            itemElement.style.borderRadius = "10px";
+            itemElement.style.borderStyle = "solid";
+
+            const nameElement = document.createElement("h3");
+            nameElement.textContent = item.name;
+            nameElement.style.color = "black";
+
+            const priceElement = document.createElement("p");
+            priceElement.textContent = `Rp. ${item.price}`;
+            priceElement.style.color = "black";
+
+            const buttonElement = document.createElement("button");
+            buttonElement.textContent = "Add to Cart";
+            buttonElement.classList.add("btn", "btn-primary", "mt-2", "mb-3");
+            buttonElement.id = "s-button";
+            buttonElement.setAttribute("data-product", "popo");
+
+            buttonElement.addEventListener("click", () => {
+                cartCount++;
+                appendLocalStorage("cart", item.id);
+                const selectedItem = list.find((item) => item.id === item.id);
+                if (selectedItem) {
+                    selectedItem.count++;
+                }
+                cartCountElement.textContent = cartCount;
+            });
+
+            itemElement.appendChild(imageElement);
+            itemElement.appendChild(nameElement);
+            itemElement.appendChild(priceElement);
+            itemElement.appendChild(buttonElement);
+
+            itemsElement.appendChild(itemElement);
+        });
+
+    </script>
+</body>
+
+</html>

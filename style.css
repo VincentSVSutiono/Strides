@@ -1,0 +1,177 @@
+    .l-strides {
+        font-family: fantasy;
+    }
+
+    .l-login {
+        margin-top: 30px;
+    }
+
+    .stride {
+        width: 100px;
+        height: 100px;
+    }
+
+    #l-username {
+        background-color: gray;
+        height: 50px;
+        border-color: black;
+    }
+
+    #l-password {
+        height: 50px;
+        background-color: gray;
+        border-color: black;
+    }
+
+    #l-button {
+        background-color: gold;
+        color: black;
+        border-color: gold;
+    }
+
+    #login {
+        background-color: rgba(0, 0, 0, 0.9);
+        width: 740px;
+        height: 100vh;
+        float: right;
+        padding: 20px;
+        color: gold;
+    }
+
+    .custom-navbar {
+        background-color: black;
+        color: gold
+    }
+
+    .m-logo img {
+        width: 100px;
+        height: 100px;
+    }
+
+    .m-logo {
+        font-family: fantasy;
+        color: gold;
+    }
+
+    .m-logo:hover {
+        text-decoration: none;
+        color: gold;
+    }
+
+    .l-cart {
+        width: 30px;
+        height: 30px;
+    }
+
+    .nav-item {
+        padding: 10px;
+    }
+
+    nav {
+        height: 100px;
+    }
+
+    .nav-link {
+        color: gold;
+    }
+
+    .nav-link:hover {
+        text-decoration: none;
+        color: gold;
+        border-bottom: 2px gold solid;
+    }
+
+    #saldo a {
+        border-bottom: none;
+    }
+
+    .n-button {
+        background-color: black;
+        border-color: gold;
+    }
+
+    .main {
+        background-color: rgb(44, 44, 44);
+    }
+
+    #about img {
+        width: 200px;
+        height: 200%px;
+    }
+
+    #box {
+        width: 1000px;
+        background-color: gold;
+    }
+
+    #about h1 {
+        color: gold;
+    }
+
+    body {
+        margin: 0;
+        padding: 0;
+        overflow-x: hidden;
+    }
+
+    h3 {
+        color: gold;
+    }
+
+    #banner img {
+        max-height: 700px;
+    }
+
+    #banner h1 {
+        color: gold;
+        text-shadow: 2px 2px black;
+    }
+
+    #banner {
+        background-color: goldenrod;
+    }
+
+    #product {
+        color: gold;
+    }
+
+    .item {
+        margin: 0;
+        padding: 0;
+        width: 350px;
+        margin: 20px;
+    }
+
+    #s-button {
+        background-color: black;
+        color: gold;
+        border-color: black;
+    }
+
+    #checkout-button {
+        background-color: gold;
+        color: Black;
+        border-color: Gold;
+    }
+
+    #cart img {
+        width: 100px;
+    }
+
+    #cart h3 {
+        color: black;
+    }
+
+    #cart {
+        background-color: goldenrod;
+        color: black;
+        margin-left: 20px;
+        margin-right: 20px;
+        border-radius: 10px;
+        border-color: black;
+    }
+
+    .c-price button {
+        color: gold;
+        background-color: black;
+    }
